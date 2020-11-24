@@ -2,11 +2,19 @@ import {Text} from "react-native";
 import React from "react";
 import styled from "styled-components/native";
 
-export const PostScreen = () => {
+type PostScreenPropsType = {
+    navigation: any
+    route: any
+}
+
+export const PostScreen = (props: PostScreenPropsType) => {
+
+    const {postId} = props.route.params;
+
     return (
         <Center>
             <Text>
-                PostScreen
+                Post: {postId}
             </Text>
         </Center>
     )

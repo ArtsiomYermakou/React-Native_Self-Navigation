@@ -1,6 +1,8 @@
-import {Button, Text} from "react-native";
 import React from "react";
 import styled from "styled-components/native";
+import {FlatList} from "react-native";
+import {DATA, DATAType} from "../data";
+import {PostItem} from "../components/Post";
 
 type MainScreenPropsType = {
     navigation: any
@@ -8,22 +10,19 @@ type MainScreenPropsType = {
 
 export const MainScreen: React.FC<MainScreenPropsType> = ({navigation}) => {
 
-    const goToPost = () => {
-        navigation.navigate("PostScreen")
+    const openPostHandler = (post: DATAType) => {
+        navigation.navigate("PostScreen", {postId: post.id, date: post.date})
     }
 
     return (
-        <Center>
-            <Text>
-                MainScreen
-            </Text>
-            <Button title={"Go to post"} onPress={goToPost}/>
-        </Center>
+        <Wrapper>
+            <FlatList data={DATA} keyExtractor={post => post.id.toString()}
+                      renderItem={({item}) => <PostItem post={item} onOpen={openPostHandler}/>}
+            />
+        </Wrapper>
     )
 }
 
-const Center = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
+const Wrapper = styled.View`
+  padding: 10px;
 `

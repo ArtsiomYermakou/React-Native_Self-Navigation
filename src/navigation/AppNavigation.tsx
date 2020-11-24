@@ -16,8 +16,18 @@ export function MyStack() {
                                  headerStyle: {backgroundColor: Platform.OS === "android" ? THEME.MAIN_COLOR : "#fff"},
                                  headerTintColor: Platform.OS === "android" ? "#fff" : THEME.MAIN_COLOR
                              }}>
-                <Stack.Screen name="MainScreen" component={MainScreen} options={{title: "My blog"}}/>
-                <Stack.Screen name="PostScreen" component={PostScreen} options={{title: "Posts"}}/>
+                <Stack.Screen name="MainScreen"
+                              component={MainScreen}
+                              options={{title: "My blog"}}
+                />
+                <Stack.Screen name="PostScreen"
+                              component={PostScreen}
+                              options={{
+                                  title: "Post", headerStyle: {
+                                      backgroundColor: "green"
+                                  }, headerTintColor: "#fff"
+                              }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );
